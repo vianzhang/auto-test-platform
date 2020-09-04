@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!-- bootstrap-progressbar -->
+    <link href="{{ url_for('static', filename='vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{{ url_for('static', filename='vendors/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ url_for('static', filename='vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
+{% endblock %}
+{% block content %}
+    <h1>欢迎！</h1>
+
+{% endblock %}
+
+
+
+
+

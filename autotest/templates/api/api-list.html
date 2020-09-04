@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock %}
+{% block head %}
+    {{ super() }}
+
+{% endblock %}
+{% block content %}
+    <div class="col-md-12 col-sm-12  ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>接口列表</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    {#                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>#}
+                    {#                      </li>#}
+                    {#                      <li class="dropdown">#}
+                    {#                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>#}
+                    {#                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">#}
+                    {#                            <a class="dropdown-item" href="#">新建接口</a>#}
+                    {#                            <a class="dropdown-item" href="#">Settings 2</a>#}
+                    {#                          </div>#}
+                    {#                      </li>#}
+                    {#                      <li><a class="close-link"><i class="fa fa-close"></i></a>#}
+                    {#                      </li>#}
+
+                </ul>
+                {#                    <button type="button" class="btn btn-info btn-sm" style="float:right" onclick="javascript:document.location.href='{{ url_for('api.add_api') }}'">新增接口</button>#}
+                <button type="button" class="btn btn-info btn-sm" style="float:right" data-toggle="modal"
+                        data-target="#addModal">新增接口
+                </button>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+                {#                    <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>#}
+
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                        <tr class="headings">
+                            <th>
+                                <input type="checkbox" id="check-all" class="flat">
+                            </th>
+                            <th class="column-title">项目名称</th>
+                            <th class="column-title">接口名称</th>
+                            <th class="column-title">接口地址</th>
+                            <th class="column-title">脚本路径</th>
+                            <th class="column-title">接口备注</th>
+                            <th class="column-title">创建时间</th>
+                            <th class="column-title">修改时间</th>
+                            <th class="column-title no-link last"><span class="nobr">操作</span>
+                            </th>
+                            <th class="bulk-actions" colspan="8">
+                                <a class="antoo" style="color:#fff; font-weight:500;">批量操作 ( <span
+                                        class="action-cnt"> </span> )
+                                <i class="fa fa-chevron-down">
+                                </i></a>
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr class="even pointer">
+                            <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000040</td>
+                            <td class=" ">May 23, 2014 11:47:56 PM</td>
+                            <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$7.45</td>
+                            <td class=" last"><a data-toggle="modal" data-target="#updateModal"><i class="fa fa-edit"></i> 编辑</a>
+                            </td>
+                        </tr>
+                        <tr class="odd pointer">
+                            <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000039</td>
+                            <td class=" ">May 23, 2014 11:30:12 PM</td>
+                            <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
+                            </td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$741.20</td>
+                            <td class=" last"><a data-toggle="modal" data-target="#updateModal"><i class="fa fa-edit"></i> 编辑</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal hide fade" id="moal" tabindex="-1" role="dialog">
+        <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal">×</button>
+            <h3 id="myModalLabel">Modal header</h3>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" id="addModal">
+        <div class="modal-dialog">
+            <div class="modal-content">      <!-- 模态框头部 -->
+                <div class="modal-header"><h2 class="modal-title">新增接口</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>      <!-- 模态框主体 -->
+                <div class="modal-body">
+{#                    <div class="col-md-12 col-sm-12 ">#}
+{#                        <div class="x_panel">#}
+                            <div class="x_content">
+                                <br/>
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                                      action="">
+
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">项目名称
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" name="project_name" required="required"
+                                                   class="form-control ">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">接口名称
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" name="api_name" required="required" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">接口地址
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="api_url">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">接口描述
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="api_desc">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">测试脚本
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="test_script_path">
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="item form-group">
+                                        <div class="col-md-6 col-sm-6 offset-md-4">
+{#                                            <button class="btn btn-primary" type="button">取消</button>#}
+                                            <button class="btn btn-primary" type="reset">重置</button>
+                                            <button type="submit" class="btn btn-success">提交</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+{#                        </div>#}
+{#                    </div>#}
+            </div>      <!-- 模态框底部 -->
+{#            <div class="modal-footer">#}
+{#                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>#}
+{#            </div>#}
+        </div>
+    </div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" id="updateModal">
+        <div class="modal-dialog">
+            <div class="modal-content">      <!-- 模态框头部 -->
+                <div class="modal-header"><h2 class="modal-title">编辑接口</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>      <!-- 模态框主体 -->
+                <div class="modal-body">
+{#                    <div class="col-md-12 col-sm-12 ">#}
+{#                        <div class="x_panel">#}
+                            <div class="x_content">
+                                <br/>
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                                      action="">
+
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">项目名称
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" name="project_name" required="required"
+                                                   class="form-control ">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">接口名称
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" name="api_name" required="required" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">接口地址
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="api_url">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">接口描述
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="api_desc">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">测试脚本
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input class="form-control" type="text" name="test_script_path">
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="item form-group">
+                                        <div class="col-md-6 col-sm-6 offset-md-4">
+{#                                            <button class="btn btn-primary" type="button">取消</button>#}
+                                            <button class="btn btn-primary" type="reset">重置</button>
+                                            <button type="submit" class="btn btn-success">提交</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+{#                        </div>#}
+{#                    </div>#}
+            </div>      <!-- 模态框底部 -->
+{#            <div class="modal-footer">#}
+{#                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>#}
+{#            </div>#}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <!-- FastClick -->
+    <script src="{{ url_for('static', filename='vendors/fastclick/js/fastclick.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ url_for('static', filename='vendors/iCheck/icheck.min.js') }}"></script>
+
+    <!-- nprogress -->
+    <script src="{{ url_for('static', filename='vendors/nprogress/nprogress.js') }}"></script>
+{% endblock %}
